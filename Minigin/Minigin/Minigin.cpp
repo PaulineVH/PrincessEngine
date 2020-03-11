@@ -22,7 +22,7 @@ void dae::Minigin::Initialize()
 	}
 
 	m_Window = SDL_CreateWindow(
-		"Programming 4 assignment",
+		"Programming 4 assignment - Pauline Vanden Heede",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		640,

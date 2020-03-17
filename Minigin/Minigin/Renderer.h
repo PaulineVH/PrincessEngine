@@ -4,7 +4,7 @@
 struct SDL_Window;
 struct SDL_Renderer;
 
-namespace dae
+namespace Princess
 {
 	class Texture2D;
 	/**

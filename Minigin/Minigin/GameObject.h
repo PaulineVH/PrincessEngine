@@ -2,7 +2,7 @@
 #include "Transform.h"
 #include "SceneObject.h"
 
-namespace dae
+namespace Princess
 {
 	class Texture2D;
 	class GameObject : public SceneObject

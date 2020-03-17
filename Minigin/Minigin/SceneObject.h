@@ -1,5 +1,5 @@
 #pragma once
-namespace dae
+namespace Princess
 {
 	class SceneObject
 	{

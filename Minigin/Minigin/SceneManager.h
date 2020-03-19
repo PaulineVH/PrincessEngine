@@ -4,6 +4,7 @@
 namespace Princess
 {
 	class Scene;
+
 	class SceneManager final : public Singleton<SceneManager>
 	{
 	public:
@@ -14,6 +15,6 @@ namespace Princess
 	private:
 		friend class Singleton<SceneManager>;
 		SceneManager() = default;
-		std::vector<std::shared_ptr<Scene>> m_Scenes;
+		std::vector<std::shared_ptr<Scene>> m_spScenes;
 	};
 }

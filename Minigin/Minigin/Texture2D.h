@@ -1,5 +1,6 @@
 #pragma once
 struct SDL_Texture;
+
 namespace Princess
 {
 	/**
@@ -17,6 +18,6 @@ namespace Princess
 		Texture2D & operator= (const Texture2D &) = delete;
 		Texture2D & operator= (const Texture2D &&) = delete;
 	private:
-		SDL_Texture* m_Texture;
+		SDL_Texture* m_pTexture;
 	};
 }

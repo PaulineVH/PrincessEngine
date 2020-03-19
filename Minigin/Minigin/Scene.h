@@ -4,11 +4,12 @@
 namespace Princess
 {
 	class SceneObject;
+
 	class Scene
 	{
 		friend Scene& SceneManager::CreateScene(const std::string& name);
 	public:
-		void Add(const std::shared_ptr<SceneObject>& object);
+		void Add(SceneObject* pObject);
 
 		void Update();
 		void Render() const;
@@ -23,9 +24,9 @@ namespace Princess
 		explicit Scene(const std::string& name);
 
 		std::string m_Name;
-		std::vector < std::shared_ptr<SceneObject>> m_Objects{};
+		std::vector<SceneObject*> m_pObjects{};
 
-		static unsigned int m_IdCounter; 
+		static uint32_t m_IdCounter; 
 	};
 
 }

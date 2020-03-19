@@ -4,23 +4,23 @@
 
 void Princess::SceneManager::Update()
 {
-	for(auto& scene : m_Scenes)
+	for(auto& spScene : m_spScenes)
 	{
-		scene->Update();
+		spScene->Update();
 	}
 }
 
 void Princess::SceneManager::Render()
 {
-	for (const auto& scene : m_Scenes)
+	for (const auto& spScene : m_spScenes)
 	{
-		scene->Render();
+		spScene->Render();
 	}
 }
 
 Princess::Scene& Princess::SceneManager::CreateScene(const std::string& name)
 {
-	const auto scene = std::shared_ptr<Scene>(new Scene(name));
-	m_Scenes.push_back(scene);
-	return *scene;
+	const auto spScene = std::shared_ptr<Scene>(new Scene(name));
+	m_spScenes.push_back(spScene);
+	return *spScene;
 }

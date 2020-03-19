@@ -23,6 +23,6 @@ namespace Princess
 
 	private:
 		Transform m_Transform;
-		std::shared_ptr<Texture2D> m_Texture{};
+		std::shared_ptr<Texture2D> m_spTexture{};
 	};
 }

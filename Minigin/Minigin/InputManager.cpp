@@ -36,7 +36,8 @@ bool Princess::InputManager::IsPressed(ControllerButton button) const
 		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_X;
 	case ControllerButton::ButtonY:
 		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_Y;
-	default: return false;
+	default: 
+		return false;
 	}
 }
 

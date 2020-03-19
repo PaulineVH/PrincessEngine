@@ -1,4 +1,5 @@
 #include "MiniginPCH.h"
+
 #include "GameObject.h"
 #include "ResourceManager.h"
 #include "Renderer.h"
@@ -10,7 +11,9 @@ Princess::GameObject::~GameObject()
 	m_pTexture = nullptr;
 }
 
-void Princess::GameObject::Update(){}
+void Princess::GameObject::Update()
+{
+}
 
 void Princess::GameObject::Render() const
 {

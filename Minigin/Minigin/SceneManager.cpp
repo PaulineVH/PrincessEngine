@@ -4,23 +4,33 @@
 
 void Princess::SceneManager::Update()
 {
-	for(auto& spScene : m_spScenes)
+	for(auto& pScene : m_pScenes)
 	{
-		spScene->Update();
+		pScene->Update();
 	}
 }
 
 void Princess::SceneManager::Render()
 {
-	for (const auto& spScene : m_spScenes)
+	for (const auto& pScene : m_pScenes)
 	{
-		spScene->Render();
+		pScene->Render();
 	}
+}
+
+Princess::SceneManager::~SceneManager()
+{
+	uint32_t size{ (uint32_t)m_pScenes.size() };
+	for (uint32_t i{ 0 }; i < size; ++i)
+	{
+		delete m_pScenes[i];
+	}
+	m_pScenes.clear();
 }
 
 Princess::Scene& Princess::SceneManager::CreateScene(const std::string& name)
 {
-	const auto spScene = std::shared_ptr<Scene>(new Scene(name));
-	m_spScenes.push_back(spScene);
-	return *spScene;
+	const auto pScene = new Scene{ name };
+	m_pScenes.push_back(pScene);
+	return *pScene;
 }

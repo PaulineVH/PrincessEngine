@@ -29,18 +29,18 @@ void Princess::ResourceManager::Init(const std::string& dataPath)
 	}
 }
 
-std::shared_ptr<Princess::Texture2D> Princess::ResourceManager::LoadTexture(const std::string& file) const
+Princess::Texture2D* Princess::ResourceManager::LoadTexture(const std::string& file) const
 {
 	const auto fullPath = m_DataPath + file;
-	auto spTexture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
-	if (spTexture == nullptr) 
+	auto pTexture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
+	if (pTexture == nullptr) 
 	{
 		throw std::runtime_error(std::string("Failed to load texture: ") + SDL_GetError());
 	}
-	return std::make_shared<Texture2D>(spTexture);
+	return new Texture2D{ pTexture };
 }
 
-std::shared_ptr<Princess::Font> Princess::ResourceManager::LoadFont(const std::string& file, unsigned int size) const
+Princess::Font* Princess::ResourceManager::LoadFont(const std::string& file, unsigned int size) const
 {
-	return std::make_shared<Font>(m_DataPath + file, size);
+	return new Font{ m_DataPath + file, size };
 }

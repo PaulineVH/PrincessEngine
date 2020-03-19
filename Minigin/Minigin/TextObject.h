@@ -16,8 +16,8 @@ namespace Princess
 		void SetText(const std::string& text);
 		void SetPosition(float x, float y);
 
-		explicit TextObject(const std::string& text, const std::shared_ptr<Font>& font);
-		virtual ~TextObject() = default;
+		explicit TextObject(const std::string& text, Font* font);
+		virtual ~TextObject();
 		TextObject(const TextObject& other) = delete;
 		TextObject(TextObject&& other) = delete;
 		TextObject& operator=(const TextObject& other) = delete;
@@ -26,7 +26,9 @@ namespace Princess
 		bool m_NeedsUpdate;
 		std::string m_Text;
 		Transform m_Transform;
-		std::shared_ptr<Font> m_spFont;
-		std::shared_ptr<Texture2D> m_spTexture;
+
+		//Resource manager doesn't manage the pointers.
+		Font* m_pFont; 
+		Texture2D* m_pTexture;
 	};
 }

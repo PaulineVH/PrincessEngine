@@ -5,6 +5,7 @@
 namespace Princess
 {
 	class Texture2D;
+
 	class GameObject : public SceneObject
 	{
 	public:
@@ -23,6 +24,6 @@ namespace Princess
 
 	private:
 		Transform m_Transform;
-		std::shared_ptr<Texture2D> m_spTexture{};
+		Texture2D* m_pTexture;
 	};
 }

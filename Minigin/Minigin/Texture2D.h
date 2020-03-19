@@ -9,7 +9,6 @@ namespace Princess
 	class Texture2D
 	{
 	public:
-		SDL_Texture* GetSDLTexture() const;
 		explicit Texture2D(SDL_Texture* texture);
 		~Texture2D();
 
@@ -17,6 +16,8 @@ namespace Princess
 		Texture2D(Texture2D &&) = delete;
 		Texture2D & operator= (const Texture2D &) = delete;
 		Texture2D & operator= (const Texture2D &&) = delete;
+		
+		SDL_Texture* GetSDLTexture() const;
 	private:
 		SDL_Texture* m_pTexture;
 	};

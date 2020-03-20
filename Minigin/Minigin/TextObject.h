@@ -18,7 +18,7 @@ namespace Princess
 		TextObject& operator=(const TextObject& other) = delete;
 		TextObject& operator=(TextObject&& other) = delete;
 		
-		void Update() override;
+		void Update(const float deltaTime) override;
 		void Render() const override;
 
 		void SetText(const std::string& text);

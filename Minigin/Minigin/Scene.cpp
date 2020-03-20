@@ -23,11 +23,11 @@ void Scene::Add(SceneObject* pObject)
 	m_pObjects.push_back(pObject);
 }
 
-void Scene::Update()
+void Scene::Update(const float deltaTime)
 {
 	for(auto& pObject : m_pObjects)
 	{
-		pObject->Update();
+		pObject->Update(deltaTime);
 	}
 }
 

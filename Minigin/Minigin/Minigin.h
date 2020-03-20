@@ -1,12 +1,16 @@
 #pragma once
+
 struct SDL_Window;
+
 namespace Princess
 {
+	class TextObject;
+	
 	class Minigin
 	{
 	public:
 		void Initialize();
-		void LoadGame() const;
+		void LoadGame();
 		void Cleanup();
 		void Run();
 	private:

@@ -24,8 +24,9 @@ Princess::TextObject::~TextObject()
 	m_pTexture = nullptr;
 }
 
-void Princess::TextObject::Update()
+void Princess::TextObject::Update(const float deltaTime)
 {
+	UNREFERENCED_PARAMETER(deltaTime);
 	if (m_NeedsUpdate)
 	{
 		const SDL_Color color = { 255,255,255 }; // only white text is supported now
@@ -40,6 +41,7 @@ void Princess::TextObject::Update()
 			throw std::runtime_error(std::string("Create text texture from surface failed: ") + SDL_GetError());
 		}
 		SDL_FreeSurface(surf);
+		delete m_pTexture;
 		m_pTexture = new Texture2D{ pTexture };
 		m_NeedsUpdate = false;
 	}

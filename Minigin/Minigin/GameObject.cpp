@@ -11,8 +11,9 @@ Princess::GameObject::~GameObject()
 	m_pTexture = nullptr;
 }
 
-void Princess::GameObject::Update()
+void Princess::GameObject::Update(const float deltaTime)
 {
+	UNREFERENCED_PARAMETER(deltaTime);
 }
 
 void Princess::GameObject::Render() const

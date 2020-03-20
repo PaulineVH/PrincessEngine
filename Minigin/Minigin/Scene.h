@@ -11,7 +11,7 @@ namespace Princess
 	public:
 		void Add(SceneObject* pObject);
 
-		void Update();
+		void Update(const float deltaTime);
 		void Render() const;
 
 		~Scene();

@@ -12,7 +12,7 @@ namespace Princess
 		SceneObject& operator=(const SceneObject& other) = delete;
 		SceneObject& operator=(SceneObject&& other) = delete;
 		
-		virtual void Update() = 0;
+		virtual void Update(const float deltaTime) = 0;
 		virtual void Render() const = 0;
 	};
 }

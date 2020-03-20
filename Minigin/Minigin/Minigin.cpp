@@ -43,7 +43,7 @@ void Princess::Minigin::Initialize()
 /**
  * Code constructing the scene world starts here
  */
-void Princess::Minigin::LoadGame() const
+void Princess::Minigin::LoadGame()
 {
 	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
 
@@ -56,10 +56,11 @@ void Princess::Minigin::LoadGame() const
 	go->SetPosition(216, 180);
 	scene.Add(go);
 
-	auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	auto to = new TextObject{ "Programming 4 Assignment", font };
+	auto pFont = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	auto to = new TextObject{ "Programming 4 Assignment", pFont };
 	to->SetPosition(80, 20);
 	scene.Add(to);
+
 }
 
 void Princess::Minigin::Cleanup()
@@ -85,19 +86,18 @@ void Princess::Minigin::Run()
 		auto& input = InputManager::GetInstance();
 
 		bool doContinue = true;
+		auto lastTime = std::chrono::high_resolution_clock::now();
 		while (doContinue)
 		{
 			const auto currentTime = high_resolution_clock::now();
+			float deltaTime = std::chrono::duration<float>(currentTime - lastTime).count();
 			
 			doContinue = input.ProcessInput();
-
-			sceneManager.Update();
+			sceneManager.Update(deltaTime);
 			
 			renderer.Render();
 			
-			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(msPerFrame) - high_resolution_clock::now());
-			
-			this_thread::sleep_for(sleepTime);
+			lastTime = currentTime;
 		}
 	}
 

@@ -17,7 +17,7 @@ namespace Princess
 		GameObject& operator=(const GameObject& other) = delete;
 		GameObject& operator=(GameObject&& other) = delete;
 		
-		void Update() override;
+		void Update(const float deltaTime) override;
 		void Render() const override;
 
 		void SetTexture(const std::string& filename);

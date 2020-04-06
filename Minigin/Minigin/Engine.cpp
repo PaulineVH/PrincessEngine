@@ -1,5 +1,5 @@
-#include "MiniginPCH.h"
-#include "Minigin.h"
+#include "EnginePCH.h"
+#include "Engine.h"
 
 #include "InputManager.h"
 #include "SceneManager.h"
@@ -16,7 +16,7 @@
 using namespace std;
 using namespace std::chrono;
 
-void Princess::Minigin::Initialize()
+void Princess::Engine::Initialize()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) 
 	{
@@ -43,7 +43,7 @@ void Princess::Minigin::Initialize()
 /**
  * Code constructing the scene world starts here
  */
-void Princess::Minigin::LoadGame()
+void Princess::Engine::LoadGame()
 {
 	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
 
@@ -63,7 +63,7 @@ void Princess::Minigin::LoadGame()
 
 }
 
-void Princess::Minigin::Cleanup()
+void Princess::Engine::Cleanup()
 {
 	Renderer::GetInstance().Destroy();
 	SDL_DestroyWindow(m_pWindow);
@@ -71,7 +71,7 @@ void Princess::Minigin::Cleanup()
 	SDL_Quit();
 }
 
-void Princess::Minigin::Run()
+void Princess::Engine::Run()
 {
 	Initialize();
 

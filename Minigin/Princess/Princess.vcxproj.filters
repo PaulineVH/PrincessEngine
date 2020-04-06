@@ -27,12 +27,6 @@
     <ClCompile Include="..\Minigin\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Minigin\Minigin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Minigin\MiniginPCH.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Minigin\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,6 +48,12 @@
     <ClCompile Include="..\Minigin\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Minigin\EnginePCH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Minigin\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Minigin\Font.h">
@@ -63,12 +63,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Minigin\InputManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Minigin\Minigin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Minigin\MiniginPCH.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Minigin\Renderer.h">
@@ -96,6 +90,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Minigin\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\EnginePCH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

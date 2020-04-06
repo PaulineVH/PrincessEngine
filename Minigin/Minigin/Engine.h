@@ -6,7 +6,7 @@ namespace Princess
 {
 	class TextObject;
 	
-	class Minigin
+	class Engine
 	{
 	public:
 		void Initialize();

@@ -95,7 +95,7 @@
       <ConformanceMode>true</ConformanceMode>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeaderFile>MiniginPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
@@ -116,7 +116,7 @@
       <ConformanceMode>true</ConformanceMode>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeaderFile>MiniginPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <ConformanceMode>true</ConformanceMode>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeaderFile>MiniginPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
@@ -164,7 +164,7 @@
       <ConformanceMode>true</ConformanceMode>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeaderFile>MiniginPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
@@ -184,8 +184,8 @@
     <ClCompile Include="..\Minigin\GameObject.cpp" />
     <ClCompile Include="..\Minigin\InputManager.cpp" />
     <ClCompile Include="..\Minigin\Main.cpp" />
-    <ClCompile Include="..\Minigin\Minigin.cpp" />
-    <ClCompile Include="..\Minigin\MiniginPCH.cpp">
+    <ClCompile Include="..\Minigin\Engine.cpp" />
+    <ClCompile Include="..\Minigin\EnginePCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -203,8 +203,8 @@
     <ClInclude Include="..\Minigin\Font.h" />
     <ClInclude Include="..\Minigin\GameObject.h" />
     <ClInclude Include="..\Minigin\InputManager.h" />
-    <ClInclude Include="..\Minigin\Minigin.h" />
-    <ClInclude Include="..\Minigin\MiniginPCH.h" />
+    <ClInclude Include="..\Minigin\Engine.h" />
+    <ClInclude Include="..\Minigin\EnginePCH.h" />
     <ClInclude Include="..\Minigin\Renderer.h" />
     <ClInclude Include="..\Minigin\ResourceManager.h" />
     <ClInclude Include="..\Minigin\Scene.h" />

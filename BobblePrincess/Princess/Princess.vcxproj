@@ -19,6 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Princess\ComponentManager.cpp" />
+    <ClCompile Include="src\Princess\Components\PhysicsComponent.cpp" />
+    <ClCompile Include="src\Princess\Components\InputComponent.cpp" />
+    <ClCompile Include="src\Princess\Components\AudioComponent.cpp" />
+    <ClCompile Include="src\Princess\Components\GraphicsComponent.cpp" />
     <ClCompile Include="src\Princess\Engine.cpp" />
     <ClCompile Include="src\Princess\EnginePCH.cpp" />
     <ClCompile Include="src\Princess\Font.cpp" />
@@ -33,6 +38,11 @@
     <ClCompile Include="src\Princess\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Princess\ComponentManager.h" />
+    <ClInclude Include="src\Princess\Components\PhysicsComponent.h" />
+    <ClInclude Include="src\Princess\Components\InputComponent.h" />
+    <ClInclude Include="src\Princess\Components\AudioComponent.h" />
+    <ClInclude Include="src\Princess\Components\GraphicsComponent.h" />
     <ClInclude Include="src\Princess.h" />
     <ClInclude Include="src\Princess\Core.h" />
     <ClInclude Include="src\Princess\Engine.h" />
@@ -49,6 +59,7 @@
     <ClInclude Include="src\Princess\TextObject.h" />
     <ClInclude Include="src\Princess\Texture2D.h" />
     <ClInclude Include="src\Princess\Transform.h" />
+    <ClInclude Include="src\Princess\Utils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

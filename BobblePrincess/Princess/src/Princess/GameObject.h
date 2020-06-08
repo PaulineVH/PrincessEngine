@@ -1,6 +1,7 @@
 #pragma once
 #include "Transform.h"
 #include "SceneObject.h"
+#include "Utils.h"
 
 namespace Princess
 {
@@ -24,6 +25,9 @@ namespace Princess
 		void SetPosition(float x, float y);
 
 	private:
+
+		std::vector<Princess::ID> m_ComponentIDs;
+
 		Transform m_Transform;
 		Texture2D* m_pTexture;
 	};

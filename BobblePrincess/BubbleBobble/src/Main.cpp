@@ -6,12 +6,24 @@
 #include <vld.h>
 #endif
 #include <iostream>
+#include <iomanip>
+#include <bitset>
+
+class Demo final : public Princess::Engine
+{
+private:
+	virtual void LoadGame() override
+	{
+		std::cout << "Demo: LoadGame() called!" << std::endl;
+
+	}
+};
+
 
 int main(int, char* [])
 {
-	std::cout << "Princess Engine" << std::endl;
-	auto engine = Princess::Engine{};
-	engine.Run();
+	Demo game{};
+	game.Run();
 	return 0;
 }
 

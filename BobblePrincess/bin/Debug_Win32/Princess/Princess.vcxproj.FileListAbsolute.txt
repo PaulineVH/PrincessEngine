@@ -1,0 +1,2 @@
+D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\Princess\Princess.lib
+D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\Princess\Princess.pdb

@@ -1,18 +1,4 @@
-﻿  Engine.cpp
-  EnginePCH.cpp
-  Font.cpp
-  GameObject.cpp
-  InputManager.cpp
-  Renderer.cpp
-  ResourceManager.cpp
-  Scene.cpp
-  SceneManager.cpp
-  TextObject.cpp
-  Texture2D.cpp
-  Transform.cpp
-  Generating Code...
-     Creating library D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\Princess\Princess.lib and object D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\Princess\Princess.exp
-  Princess.vcxproj -> D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\Princess\Princess.dll
+﻿  Princess.vcxproj -> D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\Princess\Princess.dll
   D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\Princess\Princess.dll
   1 File(s) copied
   D:\Documents\Projects\PrincessEngine\BobblePrincess\3rdParty\SDL2\lib\x86\SDL2.dll

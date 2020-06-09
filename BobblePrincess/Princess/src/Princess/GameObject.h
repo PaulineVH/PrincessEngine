@@ -26,7 +26,7 @@ namespace Princess
 
 	private:
 
-		std::vector<Princess::ID> m_ComponentIDs;
+		//std::vector<Princess::ID> m_ComponentIDs;
 
 		Transform m_Transform;
 		Texture2D* m_pTexture;

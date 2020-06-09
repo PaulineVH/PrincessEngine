@@ -1,5 +1,8 @@
+//2DAE07 - Vanden Heede, Pauline - 2019/2020
 #pragma once
 #include "Utils.h"
+#include "Core.h"
+
 namespace Princess
 {
 	struct BaseComponent

@@ -1,0 +1,2 @@
+D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\BubbleBobble\BubbleBobble.exe
+D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\BubbleBobble\BubbleBobble.pdb

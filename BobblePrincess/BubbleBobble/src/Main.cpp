@@ -22,8 +22,12 @@ private:
 
 int main(int, char* [])
 {
-	Demo game{};
-	game.Run();
+	/*Demo game{};
+	game.Run();*/
+
+	Princess::ComponentAllocator<Princess::BaseComponent> allocator{};
+	allocator.Initialise(10);
+
 	return 0;
 }
 

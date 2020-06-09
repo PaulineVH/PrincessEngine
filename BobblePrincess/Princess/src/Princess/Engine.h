@@ -10,7 +10,7 @@ namespace Princess
 {
 	class TextObject;
 	
-	class PRINCESS_API Engine
+	class Engine
 	{
 	public:
 		//------ Public Functions ------

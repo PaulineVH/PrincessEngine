@@ -1,3 +1,16 @@
+#files
+*.props
+
+#folders
+build/
+.vs/
+Release/
+Debug/
+x86/
+x64/
+Win32/
+
+
 # Prerequisites
 *.d
 
@@ -31,9 +44,3 @@
 *.out
 *.app
 
-#folders
-.vs
-Debug
-Release
-x86
-x64

@@ -1,11 +1,14 @@
 //2DAE07 - Vanden Heede, Pauline - 2019/2020
 #pragma once
+//Project Includes
 #include "Utils.h"
-// #include "Core.h"
-// #include <iostream>
+
 
 namespace Princess
 {
+	//Class Forward Declarations in the namespace Princess
+	class Texture2D;
+
 	struct BaseComponent
 	{
 		//shouldn't be able to switch components from owners
@@ -107,5 +110,41 @@ namespace Princess
 		explicit BoundingBoxComponent(uint16_t entityID, const Rectf& bb)
 			: BaseComponent{ entityID }
 			, boundingBox{ bb } {  }
+	};
+
+	struct MoveComponent : public BaseComponent
+	{
+		float xSpeed;
+		float ySpeed;
+
+		//---- Constructors ----
+		explicit MoveComponent(uint16_t entityID) noexcept
+			: MoveComponent{ entityID, 0.f, 0.f } {  }
+		explicit MoveComponent(uint16_t entityID, float _xSpeed, float _ySpeed) noexcept
+			: BaseComponent{ entityID }
+			, xSpeed{ _xSpeed }, ySpeed{ _ySpeed } {  }
+
+		//---- Operator Overloading -----
+		//-- Assignment Operator --
+		MoveComponent& operator=(const MoveComponent& o) noexcept
+		{
+			this->xSpeed = o.xSpeed;
+			this->ySpeed = o.ySpeed;
+			return *this;
+		}
+		MoveComponent& operator=(MoveComponent&& o) noexcept
+		{
+			this->xSpeed = std::move(o.xSpeed);
+			this->ySpeed = std::move(o.ySpeed);
+			return *this;
+		}
+	};
+
+	struct TextureComponent : BaseComponent
+	{
+		Texture2D* pTexture;
+
+		explicit TextureComponent(uint16_t entityID) : TextureComponent{ entityID, nullptr } {  };
+		explicit TextureComponent(uint16_t entityID, Texture2D* pT) : BaseComponent{ entityID }, pTexture{ pT } {  };
 	};
 }

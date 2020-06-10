@@ -12,9 +12,17 @@
 namespace Princess
 {
 	template<typename T>
+	struct ComponentAllocatorPair
+	{
+		T* pArray;
+		uint16_t size;
+	};
+
+	template<typename T>
 	class ComponentManager final : public Singleton<ComponentManager<T>>
 	{
 	public:
+		
 		//------ Public Functions ------
 		//---- Destructor ----
 		virtual ~ComponentManager() = default;
@@ -25,7 +33,9 @@ namespace Princess
 		//You don't want to change the pointer.
 		T* GetComponent(uint16_t entityID);
 		const T* GetComponent(uint16_t entityID) const;
+		ComponentAllocatorPair<T>& GetComponents() const;
 		void RemoveComponent(uint16_t entityID);
+
 
 	private:
 		//---- Private Friends ----
@@ -59,7 +69,14 @@ namespace Princess
 	{
 		return m_Components.Find(entityID);
 	}
-
+	template<typename T>
+	inline ComponentAllocatorPair<T>& ComponentManager<T>::GetComponents() const
+	{
+		ComponentAllocatorPair<T> pair{  };
+		pair.pArray = m_Components.GetHead();
+		pair.size = m_Components.GetSize();
+		return pair;
+	}
 	template<typename T>
 	inline void ComponentManager<T>::RemoveComponent(uint16_t entityID)
 	{

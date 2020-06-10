@@ -33,8 +33,10 @@
     <ClCompile Include="src\Princess\TextObject.cpp" />
     <ClCompile Include="src\Princess\Texture2D.cpp" />
     <ClCompile Include="src\Princess\Transform.cpp" />
+    <ClCompile Include="src\Princess\SystemManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Princess\Systems.h" />
     <ClInclude Include="src\Princess\Exception.h" />
     <ClInclude Include="src\Princess\ComponentAllocator.h" />
     <ClInclude Include="src\Princess\ComponentManager.h" />
@@ -57,6 +59,7 @@
     <ClInclude Include="src\Princess\Texture2D.h" />
     <ClInclude Include="src\Princess\Transform.h" />
     <ClInclude Include="src\Princess\Utils.h" />
+    <ClInclude Include="src\Princess\SystemManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

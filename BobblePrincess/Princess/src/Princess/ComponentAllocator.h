@@ -37,6 +37,9 @@ namespace Princess
 		T* Find(uint16_t entityID) const;
 		//remove from the list and swap with the last one
 		void Remove(uint16_t id);
+		//-- Getters --
+		T* GetHead() const;
+		uint16_t GetSize() const;
 
 	private:
 		//---- Datamembers ----
@@ -145,4 +148,16 @@ void Princess::ComponentAllocator<T>::Remove(uint16_t entityID)
 		}
 		--m_Size;
 	}
+}
+
+//-- Getters --
+template<typename T>
+T* Princess::ComponentAllocator<T>::GetHead() const
+{
+	return m_pHead;
+}
+template<typename T>
+uint16_t Princess::ComponentAllocator<T>::GetSize() const
+{
+	return m_Size;
 }

@@ -27,7 +27,7 @@ using namespace std::chrono;
 void Princess::Engine::Run()
 {
 	// tell the resource manager where he can find the game data
-	ResourceManager::GetInstance().Init("../Data/");
+	ResourceManager::GetInstance().Initialise("../Data/");
 	
 	cout << "Engine::Run() called!" << endl;
 	Initialise(640, 480);

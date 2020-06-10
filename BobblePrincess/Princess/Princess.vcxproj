@@ -20,8 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Princess\Exception.cpp" />
-    <ClCompile Include="src\Princess\ComponentAllocator.cpp" />
-    <ClCompile Include="src\Princess\ComponentManager.cpp" />
     <ClCompile Include="src\Princess\Engine.cpp" />
     <ClCompile Include="src\Princess\EnginePCH.cpp" />
     <ClCompile Include="src\Princess\EntitySystem.cpp" />

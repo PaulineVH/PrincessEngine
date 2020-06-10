@@ -119,12 +119,6 @@
     <ClCompile Include="src\Princess\SceneManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Princess\ComponentManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Princess\ComponentAllocator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Princess\EntitySystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -1,19 +1,7 @@
-﻿  Exception.cpp
-  ComponentAllocator.cpp
-  ComponentManager.cpp
-  Engine.cpp
-  EnginePCH.cpp
+﻿  Engine.cpp
   EntitySystem.cpp
-  Font.cpp
   GameObject.cpp
-  InputManager.cpp
-  Renderer.cpp
-  ResourceManager.cpp
   Scene.cpp
-  SceneManager.cpp
-  TextObject.cpp
-  Texture2D.cpp
-  Transform.cpp
   Generating Code...
   Princess.vcxproj -> D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\Princess\Princess.lib
   File not found - Princess.dll

@@ -1,8 +1,11 @@
+//2DAE07 - Vanden Heede, Pauline - 2019/2020
 #pragma once
+//Project Includes
 #include "Singleton.h"
 #include "Utils.h"
 #include "ComponentAllocator.h"
 
+//Standard Includes
 #include <vector>
 #include <utility>
 
@@ -18,11 +21,11 @@ namespace Princess
 
 		//---- Functionality ----
 		void Initialise(uint16_t capacity);
-		bool AddComponent(T& value);
+		void AddComponent(T&& value);
 		//You don't want to change the pointer.
-		T* const GetComponent(uint16_t id);
-		const T* const GetComponent(uint16_t id) const;
-		void RemoveComponent(uint16_t id);
+		T* GetComponent(uint16_t entityID);
+		const T* GetComponent(uint16_t entityID) const;
+		void RemoveComponent(uint16_t entityID);
 
 	private:
 		//---- Private Friends ----
@@ -41,17 +44,18 @@ namespace Princess
 		m_Components.Initialise(size);
 	}
 	template<typename T>
-	inline bool ComponentManager<T>::AddComponent(T& value)
+	inline void ComponentManager<T>::AddComponent(T&& value)
 	{
-		return m_Components.Add(std::move(value));
+		m_Components.Add(std::move(value));
 	}
 	template<typename T>
-	inline T* const ComponentManager<T>::GetComponent(uint16_t entityID)
+	inline T* ComponentManager<T>::GetComponent(uint16_t entityID)
 	{
 		//return m_Components[id.IDarray - 1];
+		return m_Components.Find(entityID);
 	}
 	template<typename T>
-	inline const T* const ComponentManager<T>::GetComponent(uint16_t entityID) const
+	inline const T* ComponentManager<T>::GetComponent(uint16_t entityID) const
 	{
 		return m_Components.Find(entityID);
 	}

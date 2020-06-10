@@ -1,13 +1,16 @@
+//2DAE07 - Vanden Heede, Pauline - 2019/2020
 #pragma once
 
-
-//#include "Princess/Core.h"
-
+//-- Project Includes --
 //For use by Princess applications
 #include "Princess/Engine.h"
 #include "Princess/Components.h"
-#include "Princess/ComponentAllocator.h"
 #include "Princess/utils.h"
+#include "Princess/EntitySystem.h"
+
+
+//-- Standard Includes --
+#include <iostream>
 
 ///*
 //	For templated classes you only need to do a declaration and not a definition

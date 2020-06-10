@@ -33,7 +33,7 @@ namespace Princess
 
 		//---- Functionality ----
 		void Initialise(uint16_t nrOfBlocks);
-		uint16_t Add(T&& value);
+		void Add(T&& value);
 		T* Find(uint16_t entityID) const;
 		//remove from the list and swap with the last one
 		void Remove(uint16_t id);
@@ -96,19 +96,25 @@ inline const T& Princess::ComponentAllocator<T>::operator[](uint16_t index) cons
 template<typename T>
 void Princess::ComponentAllocator<T>::Initialise(uint16_t nrOfBlocks)
 {
+	if (m_pHead)
+		return;
+
 	std::cout << "Component Allocator inialising with number " << nrOfBlocks << " and size " << sizeof(T) << " !\n";
 	m_pHead = reinterpret_cast<T*>(calloc(static_cast<size_t>(nrOfBlocks), sizeof(T)));
 	m_Capacity = nrOfBlocks;
 }
 template<typename T>
-uint16_t Princess::ComponentAllocator<T>::Add(T&& value)
+void Princess::ComponentAllocator<T>::Add(T&& value)
 {
 	if (m_Size + 1 > m_Capacity)
-		return 0;
+		return;
+
+	T* pFound = Find(static_cast<Princess::BaseComponent>(value).IDentity);
+	if (pFound) //An entity can't have a component twice
+		return;
 
 	*(m_pHead + m_Size) = std::move(value);
 	++m_Size;
-	return m_Size; //index that you return is from 1 - max 
 }
 //Returns pointer because this function doesn't necessarily find a component with the entityID given as variable.
 template<typename T>
@@ -116,11 +122,11 @@ T* Princess::ComponentAllocator<T>::Find(uint16_t entityID) const
 {
 	T* pBegin{ m_pHead };
 	// if m_Size == 1 then space 0 is filled in.
-	T* pEnd{ m_pHead + m_Size - 1 };
+	T* pEnd{ m_pHead + m_Size };
 
 	for (; pBegin != pEnd; ++pBegin) {
-		if (static_cast<Princess::BaseComponent>(pBegin).IDentity == entityID) {
-			return *pBegin;
+		if (static_cast<Princess::BaseComponent*>(pBegin)->IDentity == entityID) {
+			return pBegin;
 		}
 	}
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "Singleton.h"
+#include "Utils.h"
 
 struct SDL_Window;
 struct SDL_Renderer;
@@ -17,6 +18,7 @@ namespace Princess
 		void Render() const;
 		void Destroy();
 
+		void RenderTexture(const Texture2D* pTexture, const Float2& pos) const;
 		void RenderTexture(const Texture2D& texture, float x, float y) const;
 		void RenderTexture(const Texture2D& texture, float x, float y, float width, float height) const;
 

@@ -31,6 +31,16 @@ void Princess::Renderer::Destroy()
 	}
 }
 
+void Princess::Renderer::RenderTexture(const Texture2D* pTexture, const Princess::Float2& pos) const
+{
+	SDL_Rect dest{};
+	dest.x = static_cast<int>(pos.x);
+	dest.y = static_cast<int>(pos.y);
+
+	SDL_QueryTexture(pTexture->GetSDLTexture(), nullptr, nullptr, &dest.w, &dest.h);
+	SDL_RenderCopy(GetSDLRenderer(), pTexture->GetSDLTexture(), nullptr, &dest);
+}
+
 void Princess::Renderer::RenderTexture(const Texture2D& texture, const float x, const float y) const
 {
 	SDL_Rect dst;

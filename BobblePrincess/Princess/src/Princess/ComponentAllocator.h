@@ -1,9 +1,7 @@
 #pragma once
 //Project includes
-#include "Utils.h"
 #include "Components.h"
 #include "Exception.h"
-#include "Core.h"
 
 //Standard includes
 #include <memory>
@@ -37,6 +35,7 @@ namespace Princess
 		T* Find(uint16_t entityID) const;
 		//remove from the list and swap with the last one
 		void Remove(uint16_t id);
+
 		//-- Getters --
 		T* GetHead() const;
 		uint16_t GetSize() const;
@@ -56,16 +55,17 @@ namespace Princess
 //---- Constructors ----
 template < typename T>
 Princess::ComponentAllocator<T>::ComponentAllocator()
-	: m_Capacity{ 0 }
+	: m_pHead{ nullptr }
+	, m_Capacity{ 0 }
 	, m_Size{ 0 }
-	, m_pHead{ nullptr }
 {
 }
 template<typename T>
 Princess::ComponentAllocator<T>::ComponentAllocator(const uint16_t nrOfBlocks)
-	: m_Capacity{ nrOfBlocks }
+	: m_pHead{ new T[nrOfBlocks] }
+	//m_pHead{ reinterpret_cast<T*>(calloc(static_cast<size_t>(nrOfBlocks), sizeof(T))) }
+	, m_Capacity{ nrOfBlocks }
 	, m_Size{ 0 }
-	, m_pHead{ reinterpret_cast<T*>(calloc(static_cast<size_t>(nrOfBlocks), sizeof(T))) }
 {
 	//TODO: should come into log
 	std::cout << "Component Allocator constructor with number " << nrOfBlocks << " and size " << sizeof(T) << " called!\n";
@@ -76,7 +76,7 @@ Princess::ComponentAllocator<T>::ComponentAllocator(const uint16_t nrOfBlocks)
 template<typename T>
 Princess::ComponentAllocator<T>::~ComponentAllocator()
 {
-	free(m_pHead);
+	delete[] m_pHead;
 	m_pHead = nullptr;
 }
 
@@ -103,7 +103,8 @@ void Princess::ComponentAllocator<T>::Initialise(uint16_t nrOfBlocks)
 		return;
 
 	std::cout << "Component Allocator inialising with number " << nrOfBlocks << " and size " << sizeof(T) << " !\n";
-	m_pHead = reinterpret_cast<T*>(calloc(static_cast<size_t>(nrOfBlocks), sizeof(T)));
+	//m_pHead = reinterpret_cast<T*>(calloc(static_cast<size_t>(nrOfBlocks), sizeof(T)));
+	m_pHead = new T[nrOfBlocks];
 	m_Capacity = nrOfBlocks;
 }
 template<typename T>

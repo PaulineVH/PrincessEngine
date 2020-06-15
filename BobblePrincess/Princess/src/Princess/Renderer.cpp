@@ -1,8 +1,13 @@
+//2DAE07 - Vanden Heede, Pauline - 2019/2020
+//Project Includes
 #include "EnginePCH.h"
 #include "Renderer.h"
-#include <SDL.h>
 #include "SceneManager.h"
 #include "Texture2D.h"
+#include "Components.h"
+
+//3rdParty Includes
+#include <SDL.h>
 
 void Princess::Renderer::Init(SDL_Window * window)
 {
@@ -29,6 +34,11 @@ void Princess::Renderer::Destroy()
 		SDL_DestroyRenderer(m_Renderer);
 		m_Renderer = nullptr;
 	}
+}
+
+void Princess::Renderer::RenderTexture(const TextureComponent* pComponent, const Float2& pos) const
+{
+	RenderTexture(*pComponent->pTexture, pos.x, pos.y);
 }
 
 void Princess::Renderer::RenderTexture(const Texture2D* pTexture, const Princess::Float2& pos) const

@@ -30,10 +30,12 @@ namespace Princess
 		//---- Functionality ----
 		void Initialise(uint16_t capacity);
 		void AddComponent(T&& value);
-		//You don't want to change the pointer.
+
 		T* GetComponent(uint16_t entityID);
 		const T* GetComponent(uint16_t entityID) const;
-		ComponentAllocatorPair<T>& GetComponents() const;
+		ComponentAllocatorPair<T> GetComponents() const;
+		uint16_t GetNumberOfComponents() const;
+
 		void RemoveComponent(uint16_t entityID);
 
 
@@ -70,12 +72,17 @@ namespace Princess
 		return m_Components.Find(entityID);
 	}
 	template<typename T>
-	inline ComponentAllocatorPair<T>& ComponentManager<T>::GetComponents() const
+	inline ComponentAllocatorPair<T> ComponentManager<T>::GetComponents() const
 	{
 		ComponentAllocatorPair<T> pair{  };
 		pair.pArray = m_Components.GetHead();
 		pair.size = m_Components.GetSize();
 		return pair;
+	}
+	template<typename T>
+	inline uint16_t ComponentManager<T>::GetNumberOfComponents() const
+	{
+		return m_Components.GetSize();
 	}
 	template<typename T>
 	inline void ComponentManager<T>::RemoveComponent(uint16_t entityID)

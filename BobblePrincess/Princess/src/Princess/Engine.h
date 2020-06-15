@@ -1,6 +1,7 @@
 #pragma once
 //Project includes
-#include "Core.h"
+// #include "Core.h"
+#include "SystemManager.h"
 #include <cstdint>
 
 //Forward declarations
@@ -20,6 +21,8 @@ namespace Princess
 	private:
 		static const int m_MsPerFrame = 16; //16 for 60 fps, 33 for 30 fps
 		SDL_Window* m_pWindow{};
+
+		SystemManager m_SystemManager;
 
 		//------ Private Functions ------
 		virtual void LoadGame() = 0;

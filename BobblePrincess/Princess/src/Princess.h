@@ -5,6 +5,7 @@
 //For use by Princess applications
 #include "Princess/Engine.h"
 #include "Princess/Components.h"
+#include "Princess/Commands.h"
 #include "Princess/utils.h"
 #include "Princess/EntitySystem.h"
 

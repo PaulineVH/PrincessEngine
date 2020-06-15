@@ -14,6 +14,49 @@ private:
 	{
 		std::cout << "Demo: LoadGame() called!" << std::endl;
 
+		std::cout << "Initialising componentManagers!\n";
+		Princess::EntitySystem::GetInstance().InitialiseComponentManager<Princess::InputComponent>(10);
+
+
+		uint16_t player1 = Princess::EntitySystem::GetInstance().CreateEntity();
+		std::cout << player1 << std::endl;
+		std::cout << "Adding InputComponent!\n";
+		//Create InputComponent
+		Princess::EntitySystem::GetInstance().AddComponent<Princess::InputComponent>(Princess::InputComponent{ player1, 0, 4 });
+
+		Princess::InputComponent* inputPlayerOne = Princess::EntitySystem::GetInstance().GetComponent<Princess::InputComponent>(player1);
+		
+		inputPlayerOne->controllerUsed = true;
+		inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_B , new Princess::DuckCommand() });
+
+		inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_A , new Princess::DuckCommand() });
+
+		inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_Y , new Princess::DuckCommand() });
+
+		inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_X , new Princess::DuckCommand() });
+
+		std::cout << "Component added!\n";
+
+
+		uint16_t player2 = Princess::EntitySystem::GetInstance().CreateEntity();
+		std::cout << player2 << std::endl;
+		std::cout << "Adding InputComponent!\n";
+		//Create InputComponent
+		Princess::EntitySystem::GetInstance().AddComponent<Princess::InputComponent>(Princess::InputComponent{ player2, 1, 4, true });
+
+		std::cout << "Component added!\n";
+
+		Princess::InputComponent* inputPlayerTwo = Princess::EntitySystem::GetInstance().GetComponent<Princess::InputComponent>(player2);
+
+		inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_B , new Princess::FireCommand() });
+
+		inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_A , new Princess::FireCommand() });
+
+		inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_Y , new Princess::FireCommand() });
+
+		inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_X , new Princess::FireCommand() });
+
+		//m_Head was nullptr because inputcomponent destructor is called here
 	}
 };
 
@@ -78,7 +121,7 @@ int main(int, char* [])
 		std::cout << "No entity found with this base component.\n";
 	}*/
 
-	std::cout << "Creating EntitySystem!\n";
+	/*std::cout << "Creating EntitySystem!\n";
 	uint16_t player1 = Princess::EntitySystem::GetInstance().CreateEntity();
 	std::cout << "Player1 ID: " << player1 << ".\n";
 	uint16_t player2 = Princess::EntitySystem::GetInstance().CreateEntity();
@@ -142,6 +185,12 @@ int main(int, char* [])
 	{
 		std::cout << "Didn't find health for " << player2 << ".\n";
 	}
+*/
+
+	Demo demo{};
+	demo.Run();
+
+
 
 	std::cout << "Exiting main function Bubble Bobble!" << std::endl;
 

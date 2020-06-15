@@ -1,5 +1,13 @@
+//2DAE07 - Vanden Heede, Pauline - 2019/2020
 #pragma once
-//#include "Core.h"
+
+//Project Includes
+#include "Commands.h"
+
+//3rdParty Includes
+#include "SDL.h"
+#include <Windows.h>
+#include <XInput.h>
 
 //Standard Includes
 #include <cstdint>
@@ -40,8 +48,10 @@ namespace Princess
 		}
 		Float2& operator=(Float2&& o) noexcept 
 		{
-			this->x = std::move(o.x);
-			this->y = std::move(o.y);
+			this->x = o.x;
+			this->y = o.y;
+			o.x = 0.f;
+			o.y = 0.f;
 			return *this;
 		}
 		//-- Output Operator --
@@ -93,6 +103,9 @@ namespace Princess
 		return out << "(" << std::setprecision(2) << f.x << ", " << f.y << ", " << f.z << ")";
 	}
 
+	//-------------------------------------------------------------------------------------
+	//--------------------------------------- Rectf ---------------------------------------
+	//-------------------------------------------------------------------------------------
 	struct Rectf
 	{
 		Float2 leftBottom;
@@ -101,14 +114,94 @@ namespace Princess
 
 		//---- Constructors ----
 		Rectf() = default;
-		Rectf(const Float2& leftBottom, float w, float h)
+		explicit Rectf(const Float2& leftBottom, float w, float h) noexcept
 			: leftBottom{ leftBottom }, width{ w }, height{ h } {  }
-		Rectf(float l, float b, float w, float h)
+		explicit Rectf(float l, float b, float w, float h) noexcept
 			: leftBottom{ l, b }, width{ w }, height{ h } {  }
 		Rectf(const Rectf& o) noexcept
 			: leftBottom{ o.leftBottom }, width{ o.width }, height{ o.height } {  }
 		Rectf(Rectf&& o) noexcept
-			: leftBottom{ std::move(o.leftBottom) }, width{ std::move(o.width) }, height{ std::move(o.height) } {  }
+			: leftBottom{ std::move(o.leftBottom) }, width{ o.width }, height{ o.height } 
+		{
+			o.width = 0.f;
+			o.height = 0.f;
+		}
 
+		//---- Operators -----
+		//-- Assignment Operators --
+		Rectf& operator=(const Rectf& o) noexcept
+		{
+			this->leftBottom = o.leftBottom;
+			this->width = o.width;
+			this->height = o.height;
+			
+			return *this;
+		}
+		Rectf& operator=(Rectf&& o) noexcept
+		{
+			this->leftBottom = std::move(o.leftBottom);
+			this->width = o.width;
+			this->height = o.height;
+
+			o.width = 0.f;
+			o.height = 0.f;
+
+			return *this;
+		}
+	};
+
+
+	//-------------------------------------------------------------------------------------
+	//--------------------------------------- Button --------------------------------------
+	//-------------------------------------------------------------------------------------
+	struct Button
+	{
+		union
+		{
+			SDL_Keycode keyboardKey;
+			//Bitmask of the device digital buttons is a WORD
+			//https://docs.microsoft.com/en-us/windows/win32/api/xinput/ns-xinput-xinput_gamepad
+			WORD controllerButton;
+		} button{};
+		Command* pCommand{ nullptr };
+		//---- Constructors ----
+		Button() = default;
+		Button(WORD&& controllerButton, Command* pNewCommand)
+			: pCommand{ pNewCommand }
+		{
+			button.controllerButton = controllerButton;
+		}
+		/*Button(const SDL_Keycode& keyboardKey, Command* pNewCommand)
+			: pCommand{ pNewCommand }
+		{
+			button.keyboardKey = keyboardKey;
+		}*/
+
+		Button(Button&& o)
+			: button{ o.button }
+			, pCommand{ o.pCommand }
+		{
+			o.button.controllerButton = 0;
+			o.pCommand = nullptr;
+		}
+		Button& operator=(Button&& o)
+		{
+			this->button = o.button;
+			this->pCommand = o.pCommand;
+
+			o.button.controllerButton = 0;
+			o.pCommand = nullptr;
+			return *this;
+		}
+
+		~Button()
+		{
+			if (pCommand)
+			{
+				delete pCommand;
+				pCommand = nullptr;
+			}
+
+		}
 	};
 }

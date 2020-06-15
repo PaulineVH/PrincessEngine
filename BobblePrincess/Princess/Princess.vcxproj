@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Princess\Commands.cpp" />
     <ClCompile Include="src\Princess\Exception.cpp" />
     <ClCompile Include="src\Princess\Engine.cpp" />
     <ClCompile Include="src\Princess\EnginePCH.cpp" />
     <ClCompile Include="src\Princess\EntitySystem.cpp" />
     <ClCompile Include="src\Princess\Font.cpp" />
     <ClCompile Include="src\Princess\GameObject.cpp" />
-    <ClCompile Include="src\Princess\InputManager.cpp" />
     <ClCompile Include="src\Princess\Renderer.cpp" />
     <ClCompile Include="src\Princess\ResourceManager.cpp" />
     <ClCompile Include="src\Princess\Scene.cpp" />
@@ -36,6 +36,8 @@
     <ClCompile Include="src\Princess\SystemManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Princess\FixedSizeAllocator.h" />
+    <ClInclude Include="src\Princess\Commands.h" />
     <ClInclude Include="src\Princess\Systems.h" />
     <ClInclude Include="src\Princess\Exception.h" />
     <ClInclude Include="src\Princess\ComponentAllocator.h" />
@@ -48,7 +50,6 @@
     <ClInclude Include="src\Princess\EntitySystem.h" />
     <ClInclude Include="src\Princess\Font.h" />
     <ClInclude Include="src\Princess\GameObject.h" />
-    <ClInclude Include="src\Princess\InputManager.h" />
     <ClInclude Include="src\Princess\Renderer.h" />
     <ClInclude Include="src\Princess\ResourceManager.h" />
     <ClInclude Include="src\Princess\Scene.h" />
@@ -147,6 +148,7 @@
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\vld\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -196,6 +198,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(SolutionDir)bin\$(Confi
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -223,6 +226,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x86\*.dll" "$(SolutionDir)bin\$(Confi
       <PrecompiledHeaderFile>EnginePCH.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

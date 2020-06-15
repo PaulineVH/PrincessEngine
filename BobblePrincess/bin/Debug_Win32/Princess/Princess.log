@@ -1,9 +1,7 @@
 ﻿  Engine.cpp
   EntitySystem.cpp
-  GameObject.cpp
   Renderer.cpp
-  ResourceManager.cpp
-  TextObject.cpp
+  SystemManager.cpp
   Generating Code...
   Princess.vcxproj -> D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\Princess\Princess.lib
   File not found - Princess.dll

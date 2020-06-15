@@ -4,7 +4,6 @@
 
 //Project Includes
 #include "ComponentManager.h"
-#include "InputManager.h"
 #include "SceneManager.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
@@ -34,11 +33,11 @@ void Princess::Engine::Run()
 
 
 	LoadGame();
+	m_SystemManager.GetInputSystem().Initialise();
 
 	{
 		auto& renderer = Renderer::GetInstance();
 		auto& sceneManager = SceneManager::GetInstance();
-		auto& input = InputManager::GetInstance();
 
 		bool doContinue = true;
 		auto lastTime = std::chrono::high_resolution_clock::now();
@@ -47,7 +46,10 @@ void Princess::Engine::Run()
 			const auto currentTime = high_resolution_clock::now();
 			float deltaTime = std::chrono::duration<float>(currentTime - lastTime).count();
 			
-			doContinue = input.ProcessInput();
+			doContinue = m_SystemManager.GetInputSystem().ProcessInput();
+
+			m_SystemManager.GetInputSystem().OnUpdate();
+
 			sceneManager.Update(deltaTime);
 			
 			renderer.Render();

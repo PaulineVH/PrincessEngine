@@ -163,13 +163,14 @@ namespace Princess
 			//https://docs.microsoft.com/en-us/windows/win32/api/xinput/ns-xinput-xinput_gamepad
 			WORD controllerButton;
 		} button{};
-		Command* pCommand{ nullptr };
+		//Function pointer to command
+		void (*fpCommand)(uint16_t);
 		//---- Constructors ----
 		Button() = default;
-		Button(WORD&& controllerButton, Command* pNewCommand)
-			: pCommand{ pNewCommand }
+		Button(WORD&& XINPUT_GAMEPAD_, void (*newCommand)(uint16_t))
+			: fpCommand{ newCommand }
 		{
-			button.controllerButton = controllerButton;
+			button.controllerButton = XINPUT_GAMEPAD_;
 		}
 		/*Button(const SDL_Keycode& keyboardKey, Command* pNewCommand)
 			: pCommand{ pNewCommand }
@@ -177,31 +178,24 @@ namespace Princess
 			button.keyboardKey = keyboardKey;
 		}*/
 
-		Button(Button&& o)
+		Button(Button&& o) noexcept
 			: button{ o.button }
-			, pCommand{ o.pCommand }
+			, fpCommand{ o.fpCommand }
 		{
 			o.button.controllerButton = 0;
-			o.pCommand = nullptr;
+			o.fpCommand = nullptr;
 		}
-		Button& operator=(Button&& o)
+		Button& operator=(Button&& o) noexcept
 		{
 			this->button = o.button;
-			this->pCommand = o.pCommand;
+			this->fpCommand = o.fpCommand;
 
 			o.button.controllerButton = 0;
-			o.pCommand = nullptr;
+			o.fpCommand = nullptr;
 			return *this;
 		}
 
-		~Button()
-		{
-			if (pCommand)
-			{
-				delete pCommand;
-				pCommand = nullptr;
-			}
-
-		}
+		~Button() = default;
 	};
+
 }

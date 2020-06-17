@@ -12,7 +12,6 @@ namespace Princess
 		virtual ~Command() = default;
 		virtual void Execute(uint16_t){};
 	private:
-		uint16_t hello{ 0 };
 	};
 
 	class DuckCommand final : public Command

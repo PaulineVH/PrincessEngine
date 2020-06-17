@@ -1,6 +1,5 @@
 ﻿  Engine.cpp
-  EntitySystem.cpp
-  Renderer.cpp
+  TextObject.cpp
   SystemManager.cpp
   Generating Code...
   Princess.vcxproj -> D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Debug_Win32\Princess\Princess.lib

@@ -10,6 +10,7 @@ namespace Princess
 {
 	class Texture2D;
 	struct TextureComponent;
+	struct TransformComponent;
 	/**
 	 * Simple RAII wrapper for the SDL renderer
 	 */
@@ -25,9 +26,12 @@ namespace Princess
 		void RenderTexture(const Texture2D& texture, float x, float y) const;
 		void RenderTexture(const Texture2D& texture, float x, float y, float width, float height) const;
 
-		SDL_Renderer* GetSDLRenderer() const { return m_Renderer; }
+		void RenderScaledTexture(const TextureComponent& pComponent, const TransformComponent& transform) const;
+
+		SDL_Renderer* GetSDLRenderer() const { return m_pRenderer; }
+
 	private:
-		SDL_Renderer* m_Renderer{};
+		SDL_Renderer* m_pRenderer{};
 	};
 }
 

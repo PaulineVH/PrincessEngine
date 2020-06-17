@@ -36,7 +36,7 @@ void Princess::Engine::Run()
 	m_SystemManager.GetInputSystem().Initialise();
 
 	{
-		auto& renderer = Renderer::GetInstance();
+		//auto& renderer = Renderer::GetInstance();
 		auto& sceneManager = SceneManager::GetInstance();
 
 		bool doContinue = true;
@@ -50,9 +50,11 @@ void Princess::Engine::Run()
 
 			m_SystemManager.GetInputSystem().OnUpdate();
 
+			m_SystemManager.GetRenderSystem().OnUpdate();
+
 			sceneManager.Update(deltaTime);
 			
-			renderer.Render();
+			//renderer.Render();
 			
 			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(m_MsPerFrame) - high_resolution_clock::now());
 			this_thread::sleep_for(sleepTime);

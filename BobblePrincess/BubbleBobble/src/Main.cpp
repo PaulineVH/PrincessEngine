@@ -7,14 +7,17 @@
 #endif
 
 
+//Project includes
+#include "Commands.h"
+
 class Demo final : public Princess::Engine
 {
 private:
 	virtual void LoadGame() override
 	{
-		std::cout << "Demo: LoadGame() called!" << std::endl;
+		//std::cout << "Demo: LoadGame() called!" << std::endl;
 
-		std::cout << "Initialising componentManagers!\n";
+		//std::cout << "Initialising componentManagers!\n";
 		Princess::EntitySystem::GetInstance().InitialiseComponentManager<Princess::InputComponent>(10);
 
 
@@ -25,38 +28,52 @@ private:
 		Princess::EntitySystem::GetInstance().AddComponent<Princess::InputComponent>(Princess::InputComponent{ player1, 0, 4 });
 
 		Princess::InputComponent* inputPlayerOne = Princess::EntitySystem::GetInstance().GetComponent<Princess::InputComponent>(player1);
-		
+		//
 		inputPlayerOne->controllerUsed = true;
-		inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_B , new Princess::DuckCommand() });
+		inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_B , &BubbleBobble::DuckCommand });
 
-		inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_A , new Princess::DuckCommand() });
+		//inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_A , new Princess::DuckCommand() });
 
-		inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_Y , new Princess::DuckCommand() });
+		//inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_Y , new Princess::DuckCommand() });
 
-		inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_X , new Princess::DuckCommand() });
+		//inputPlayerOne->input.Add(Princess::Button{ XINPUT_GAMEPAD_X , new Princess::DuckCommand() });
 
-		std::cout << "Component added!\n";
+		//std::cout << "Component added!\n";
 
 
-		uint16_t player2 = Princess::EntitySystem::GetInstance().CreateEntity();
-		std::cout << player2 << std::endl;
-		std::cout << "Adding InputComponent!\n";
-		//Create InputComponent
-		Princess::EntitySystem::GetInstance().AddComponent<Princess::InputComponent>(Princess::InputComponent{ player2, 1, 4, true });
+		//uint16_t player2 = Princess::EntitySystem::GetInstance().CreateEntity();
+		//std::cout << player2 << std::endl;
+		//std::cout << "Adding InputComponent!\n";
+		////Create InputComponent
+		//Princess::EntitySystem::GetInstance().AddComponent<Princess::InputComponent>(Princess::InputComponent{ player2, 1, 4, true });
 
-		std::cout << "Component added!\n";
+		//std::cout << "Component added!\n";
 
-		Princess::InputComponent* inputPlayerTwo = Princess::EntitySystem::GetInstance().GetComponent<Princess::InputComponent>(player2);
+		//Princess::InputComponent* inputPlayerTwo = Princess::EntitySystem::GetInstance().GetComponent<Princess::InputComponent>(player2);
 
-		inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_B , new Princess::FireCommand() });
+		//inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_B , new Princess::FireCommand() });
 
-		inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_A , new Princess::FireCommand() });
+		//inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_A , new Princess::FireCommand() });
 
-		inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_Y , new Princess::FireCommand() });
+		//inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_Y , new Princess::FireCommand() });
 
-		inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_X , new Princess::FireCommand() });
+		//inputPlayerTwo->input.Add(Princess::Button{ XINPUT_GAMEPAD_X , new Princess::FireCommand() });
 
-		//m_Head was nullptr because inputcomponent destructor is called here
+		//Initialising component managers
+		Princess::EntitySystem::GetInstance().InitialiseComponentManager<Princess::TransformComponent>(10);
+		Princess::EntitySystem::GetInstance().InitialiseComponentManager<Princess::TextureComponent>(10);
+
+		//Add entities
+		uint16_t background = Princess::EntitySystem::GetInstance().CreateEntity();
+		uint16_t logo = Princess::EntitySystem::GetInstance().CreateEntity();
+
+		Princess::EntitySystem::GetInstance().AddComponent<Princess::TextureComponent>(Princess::TextureComponent{ background, Princess::ResourceManager::GetInstance().LoadTexture("background.jpg") });
+
+		Princess::EntitySystem::GetInstance().AddComponent<Princess::TextureComponent>(Princess::TextureComponent{ logo, Princess::ResourceManager::GetInstance().LoadTexture("logo.png") });
+
+		Princess::TransformComponent* pLogoTransform = Princess::EntitySystem::GetInstance().GetComponent<Princess::TransformComponent>(logo);
+		pLogoTransform->position = Princess::Float2{ 216.f , 180.f };
+		pLogoTransform->scale = Princess::Float2{ 2.f, 1.5f };
 	}
 };
 

@@ -75,6 +75,8 @@ namespace Princess
 		float rotation; // how does rotation work in 2D? -> only in the xy 
 
 		//---- Constructors ----
+		TransformComponent() noexcept
+			: TransformComponent{ 0 } {  }
 		explicit TransformComponent(uint16_t entityID) noexcept
 			: TransformComponent{ entityID, Float2{ 0.f, 0.f } } {  }
 		explicit TransformComponent(uint16_t entityID, const Float2& pos, const Float2& sc = Float2(1.f, 1.f), const float& rot = 0.f) noexcept
@@ -217,12 +219,10 @@ namespace Princess
 		explicit MoveComponent(uint16_t entityID) noexcept
 			: MoveComponent{ entityID, 0.f, 0.f } {  }
 		explicit MoveComponent(uint16_t entityID, float _xSpeed, float _ySpeed) noexcept
-			: BaseComponent{ entityID }
-			, xSpeed{ _xSpeed }, ySpeed{ _ySpeed } {  }
+			: BaseComponent{ entityID }, xSpeed{ _xSpeed }, ySpeed{ _ySpeed } {  }
 		MoveComponent(const MoveComponent&) = delete;
-		MoveComponent(MoveComponent&& o)
-			: BaseComponent{ std::move(o) }
-			, xSpeed{ o.xSpeed }, ySpeed{ o.ySpeed }
+		MoveComponent(MoveComponent&& o) noexcept
+			: BaseComponent{ std::move(o) }, xSpeed{ o.xSpeed }, ySpeed{ o.ySpeed }
 		{
 			o.xSpeed = 0.f;
 			o.ySpeed = 0.f;
@@ -234,6 +234,7 @@ namespace Princess
 		MoveComponent& operator=(MoveComponent&& o) noexcept
 		{
 			BaseComponent::operator=(std::move(o));
+
 			this->xSpeed = o.xSpeed;
 			this->ySpeed = o.ySpeed;
 
@@ -253,8 +254,12 @@ namespace Princess
 	{
 		Texture2D* pTexture;
 
-		explicit TextureComponent(uint16_t entityID) : TextureComponent{ entityID, nullptr } {  };
-		explicit TextureComponent(uint16_t entityID, Texture2D* pT) : BaseComponent{ entityID }, pTexture{ pT } {  };
+		TextureComponent() noexcept
+			: BaseComponent{  }, pTexture{ nullptr } {  }
+		explicit TextureComponent(uint16_t entityID) noexcept
+			: TextureComponent{ entityID, nullptr } {  }
+		explicit TextureComponent(uint16_t entityID, Texture2D* pT) noexcept
+			: BaseComponent{ entityID }, pTexture{ pT } {  }
 	};
 
 
@@ -263,6 +268,7 @@ namespace Princess
 	//-------------------------------------------------------------------------------------
 	struct InputComponent : public BaseComponent
 	{
+		//---- Datamembers ----
 		FixedSizeAllocator<Button> input;
 		//default value false
 		bool controllerUsed;
@@ -338,5 +344,29 @@ namespace Princess
 	private:
 		//number from 0 to 3 -> xinput can connect up to 4 controllers.
 		DWORD controllerID; 
+	};
+
+
+	//-------------------------------------------------------------------------------------
+	//---------------------------------- Sprite Component ---------------------------------
+	//-------------------------------------------------------------------------------------
+	struct SpriteComponent
+	{
+		Texture2D* pTexture;
+
+		const float clipHeight; //height and with of one frame
+		const float clipWidth;
+		const float offsetX; //offset of the sprite
+		const float offsetY;
+
+		float animationTime;
+
+		const uint16_t nrColumns; //number of columns in the sprite
+		const uint16_t nrRows; //number of rows in the sprite
+		const uint16_t nrOfFrams; //number of frames in the sprite
+		const uint16_t nrFramesASecond; //speed of frames
+
+		uint16_t animationFrame; // current animation frame that is displaying
+		uint16_t nrOfCycles; //number of times the sprite is repeat itself
 	};
 }

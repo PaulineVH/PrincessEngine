@@ -19,6 +19,7 @@ namespace Princess
 		SystemManager() = default;
 
 		InputSystem& GetInputSystem();
+		RenderSystem& GetRenderSystem();
 
 	private:
 		std::vector<BaseComponentSystem*> m_Systems;

@@ -8,3 +8,7 @@ Princess::InputSystem& Princess::SystemManager::GetInputSystem()
 	return m_InputSystem;
 }
 
+Princess::RenderSystem& Princess::SystemManager::GetRenderSystem()
+{
+	return m_RenderSystem;
+}

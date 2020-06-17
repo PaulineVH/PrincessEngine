@@ -8,6 +8,7 @@
 #include "Princess/Commands.h"
 #include "Princess/utils.h"
 #include "Princess/EntitySystem.h"
+#include "Princess/ResourceManager.h"
 
 
 //-- Standard Includes --

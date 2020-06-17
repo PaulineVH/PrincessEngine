@@ -7,6 +7,7 @@
 
 //Standard Includes
 //#include "windows.h"
+#include <cstdint>
 
 namespace Princess
 {
@@ -24,14 +25,50 @@ namespace Princess
 
 	struct RenderSystem final
 	{
-		void OnUpdate(float)
+		void OnUpdate()
 		{
+			SDL_RenderClear(Renderer::GetInstance().GetSDLRenderer());
+
+
 			ComponentAllocatorPair<TextureComponent> pair = ComponentManager<TextureComponent>::GetInstance().GetComponents();
 			TextureComponent* pBegin{ pair.pArray };
 			TextureComponent* pEnd{ pair.pArray + pair.size };
 			for (; pBegin != pEnd; ++pBegin)
 			{
-				Renderer::GetInstance().RenderTexture(pBegin, ComponentManager<TransformComponent>::GetInstance().GetComponent(pBegin->IDentity)->position);
+				Renderer::GetInstance().RenderScaledTexture(*pBegin, *ComponentManager<TransformComponent>::GetInstance().GetComponent(pBegin->IDentity));
+			}
+
+
+			SDL_RenderPresent(Renderer::GetInstance().GetSDLRenderer());
+
+		}
+
+	};
+
+
+	struct SpriteSystem final : BaseComponentSystem
+	{
+
+		virtual void OnUpdate(float elapsedSec)
+		{
+			ComponentAllocatorPair<SpriteComponent> pair = ComponentManager<SpriteComponent>::GetInstance().GetComponents();
+
+			SpriteComponent* pBegin{ pair.pArray };
+			SpriteComponent* pEnd{ pair.pArray + pair.size };
+
+			for (; pBegin != pEnd; ++pBegin) // for every inputcomponent
+			{
+				pBegin->animationTime += elapsedSec;
+
+				if (pBegin->animationTime > (1.f / pBegin->nrFramesASecond))
+				{
+					++pBegin->animationFrame;
+					if (pBegin->animationFrame == pBegin->nrOfFrams)
+						++pBegin->nrOfCycles; // overflow can happen as it is an unsigned int and modulo would do the same
+
+					pBegin->animationFrame %= pBegin->nrOfFrams;
+					pBegin->animationTime -= (1.f / pBegin->nrFramesASecond);
+				}
 			}
 		}
 	};
@@ -78,7 +115,7 @@ namespace Princess
 					//check if the related key is pressed
 					if (IsPressed(pBegin->input[i], pBegin->GetControllerID(), pBegin->controllerUsed))
 					{
-						pBegin->input[i].pCommand->Execute(pBegin->IDentity);
+						pBegin->input[i].fpCommand(pBegin->IDentity);
 					}
 				}
 

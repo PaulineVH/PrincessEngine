@@ -1,21 +1,21 @@
 ﻿  Commands.cpp
-  Exception.cpp
   Engine.cpp
   EnginePCH.cpp
   EntitySystem.cpp
+  Exception.cpp
   Font.cpp
   GameObject.cpp
   Renderer.cpp
   ResourceManager.cpp
   Scene.cpp
   SceneManager.cpp
+  SystemManager.cpp
   TextObject.cpp
   Texture2D.cpp
   Transform.cpp
-  SystemManager.cpp
   Princess.vcxproj -> D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Release_Win32\Princess\Princess.lib
-  0 File(s) copied
   File not found - Princess.dll
+  0 File(s) copied
   D:\Documents\Projects\PrincessEngine\BobblePrincess\3rdParty\SDL2\lib\x86\SDL2.dll
   1 File(s) copied
   D:\Documents\Projects\PrincessEngine\BobblePrincess\3rdParty\SDL2_image\lib\x86\libjpeg-9.dll

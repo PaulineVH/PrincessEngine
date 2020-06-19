@@ -1,8 +1,8 @@
 ﻿  Main.cpp
      Creating library D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Release_Win32\BubbleBobble\BubbleBobble.lib and object D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Release_Win32\BubbleBobble\BubbleBobble.exp
   Generating code
-  654 of 658 functions (99.4%) were compiled, the rest were copied from previous compilation.
-    649 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+  0 of 658 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   BubbleBobble.vcxproj -> D:\Documents\Projects\PrincessEngine\BobblePrincess\bin\Release_Win32\BubbleBobble\BubbleBobble.exe

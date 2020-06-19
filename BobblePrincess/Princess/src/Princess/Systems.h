@@ -88,7 +88,7 @@ namespace Princess
 			for (size_t i{ 0 }; i < m_CurrentStateControllers.size(); ++i)
 			{
 				ZeroMemory(&m_CurrentStateControllers[i], sizeof(XINPUT_STATE));
-				XInputGetState(i, &m_CurrentStateControllers[i]);
+				XInputGetState(DWORD(i), &m_CurrentStateControllers[i]);
 			}
 
 			//keyboard input

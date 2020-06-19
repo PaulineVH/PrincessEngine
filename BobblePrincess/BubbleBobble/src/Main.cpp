@@ -73,7 +73,6 @@ private:
 
 		Princess::TransformComponent* pLogoTransform = Princess::EntitySystem::GetInstance().GetComponent<Princess::TransformComponent>(logo);
 		pLogoTransform->position = Princess::Float2{ 216.f , 180.f };
-		pLogoTransform->scale = Princess::Float2{ 2.f, 1.5f };
 	}
 };
 
